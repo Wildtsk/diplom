@@ -6,7 +6,18 @@ on:
       - 'main'
       - 'dev_34'
 
+env:
+    USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+    TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+
 jobs:
+  show_env:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show secrets
+      - run: |
+        echo "username=$USERNAME, token=$TOKEN"
+
   build:
     runs-on: ubuntu-latest
     steps:
